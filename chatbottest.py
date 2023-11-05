@@ -7,7 +7,7 @@ from llama_index import SimpleDirectoryReader
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
 st.title("Chat with the City of Rapid City website.")
-st.info("This is a demo using the top 150 sites from the city", icon="📃")
+st.info("This is a demo using the top 150 pages from the city website", icon="📃")
          
 if "messages" not in st.session_state.keys(): # Initialize the chat messages history
     st.session_state.messages = [
