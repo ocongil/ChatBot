@@ -6,12 +6,12 @@ from llama_index import SimpleDirectoryReader
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
-st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
-st.info("Check out the full tutorial to build this app in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
+st.title("Chat with the City of Rapid City website.")
+st.info("This is a demo using the top 150 sites from the city", icon="📃")
          
 if "messages" not in st.session_state.keys(): # Initialize the chat messages history
     st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+        {"role": "assistant", "content": "Ask me a question about the City of Rapid City!"}
     ]
 
 @st.cache_resource(show_spinner=False)
@@ -23,7 +23,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
 #         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
 #         return index
 def load_data():
-    with st.spinner(text="Loading and indexing the City of Rapid City docs – hang tight! This should take 1-2 minutes."):
+    with st.spinner(text="Loading and indexing the City of Rapid City website – hang tight! This should take 1-2 minutes."):
         #reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         BeautifulSoupWebReader = download_loader("BeautifulSoupWebReader")
         loader = BeautifulSoupWebReader()
