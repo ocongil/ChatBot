@@ -161,3 +161,6 @@ cython_debug/
 
 #toml secrets
 secrets.toml
+
+#index folder
+savedindex/
