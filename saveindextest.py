@@ -33,5 +33,5 @@ def load_data():
     return index
 
 index = load_data()
-index.storage_context.persist("testindex")
+index.storage_context.persist("savedindex")
 
