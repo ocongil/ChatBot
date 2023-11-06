@@ -18,7 +18,7 @@ def read_url_list(file_path):
         print(f"An error occurred: {e}")
         return []
     
-url_list = read_url_list(".\Data\PageList.txt")
+url_list = read_url_list(".\Data\PageList - Large.txt")
 
 def load_data():
     #reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
