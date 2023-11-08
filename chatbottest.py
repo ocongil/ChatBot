@@ -3,11 +3,14 @@ from llama_index import VectorStoreIndex, ServiceContext, Document,  download_lo
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
+from PIL import Image
 
 st.set_page_config(page_title="Chat with the City of Rapid City website, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
 st.title("Chat with the City of Rapid City website.")
 st.info("This is a demo using the top 150 pages from the city website", icon="📃")
+image = Image.open('CoRC-logo.png')
+st.image(image, caption='City of Rapid City Logo')
 
 def read_url_list(file_path):
     try:
@@ -31,7 +34,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
 
 @st.cache_resource(show_spinner=False)
 def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
+    with st.spinner(text="Loading and indexing the webpage data – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./WebData", recursive=True)
         docs = reader.load_data()
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are an expert on the Streamlit Python library and your job is to answer technical questions. Assume that all questions are related to the Streamlit Python library. Keep your answers technical and based on facts – do not hallucinate features."))
